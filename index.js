@@ -23,7 +23,7 @@ function applyLang(l){curLang=l;var s=T[l];document.querySelectorAll("[data-i]")
 function toggleLang(){applyLang(curLang==="ja"?"en":"ja")}
 function tr(k){return T[curLang][k]||T.en[k]||k}
 applyLang(curLang);
-var _zc=0,_zt=0;var _zb=document.getElementById("zb");if(_zb)_zb.addEventListener("click",function(e){var n=Date.now();if(n-_zt>2000)_zc=0;_zt=n;_zc++;if(_zc>=3){e.preventDefault();_zc=0;location.href="/dashboard"}});
+var _zc=0,_zt=0,_zto=0;var _zb=document.getElementById("zb");if(_zb)_zb.addEventListener("click",function(e){e.preventDefault();var n=Date.now();if(n-_zt>2000)_zc=0;_zt=n;_zc++;clearTimeout(_zto);if(_zc>=3){_zc=0;location.href="/dashboard"}else{_zto=setTimeout(function(){_zc=0;location.href="/"},500)}});
 fetch("/api/hashire/stats").then(function(r){return r.json()}).then(function(d){document.getElementById("play-count").textContent=d.plays;document.getElementById("dl-count").textContent=d.downloads}).catch(function(){});
 </script>`;
 
