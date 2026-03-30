@@ -23,6 +23,7 @@ function applyLang(l){curLang=l;var s=T[l];document.querySelectorAll("[data-i]")
 function toggleLang(){applyLang(curLang==="ja"?"en":"ja")}
 function tr(k){return T[curLang][k]||T.en[k]||k}
 applyLang(curLang);
+var _zc=0,_zt=0;var _zb=document.getElementById("zb");if(_zb)_zb.addEventListener("click",function(e){var n=Date.now();if(n-_zt>2000)_zc=0;_zt=n;_zc++;if(_zc>=3){e.preventDefault();_zc=0;location.href="/dashboard"}});
 fetch("/api/hashire/stats").then(function(r){return r.json()}).then(function(d){document.getElementById("play-count").textContent=d.plays;document.getElementById("dl-count").textContent=d.downloads}).catch(function(){});
 </script>`;
 
@@ -55,7 +56,7 @@ ${LANG_BTN_CSS}
 <div class="bg-cover"><img src="/cover.jpg" alt=""><div style="position:absolute;inset:0;background:radial-gradient(circle at center,transparent 20%,#080808 70%);border-radius:24px"></div></div>
 <div class="bg-grad"></div><div class="noise"></div>
 <div class="container">
-<nav><a href="/" class="nav-brand"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#FF6B35" stroke-width="2"/><circle cx="16" cy="16" r="6" fill="#FF6B35"/><circle cx="16" cy="16" r="2" fill="#0A0A0B"/></svg><span>Zupi Share</span></a><div class="nav-links"><a href="/" data-i="nav_home">Home</a><a href="/hashire" class="active" data-i="nav_hashire">Hashire</a>${LANG_BTN}</div></nav>
+<nav><a href="/" class="nav-brand" id="zb"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#FF6B35" stroke-width="2"/><circle cx="16" cy="16" r="6" fill="#FF6B35"/><circle cx="16" cy="16" r="2" fill="#0A0A0B"/></svg><span>Zupi Share</span></a><div class="nav-links"><a href="/" data-i="nav_home">Home</a><a href="/hashire" class="active" data-i="nav_hashire">Hashire</a>${LANG_BTN}</div></nav>
 <div class="hero">
   <div class="cover-row"><img class="cover-img" src="/cover.jpg" alt="B-Spanner HASHIRE"><div class="title-block"><div class="jp-title">走れ</div><div class="en-title">HASHIRE</div><div class="artist-badge">B-Spanner</div></div></div>
   <div class="subtitle"><strong data-i="subtitle_strong">Open Verse Challenge</strong> <span data-i="subtitle_text">— Download the beat. Record your verse. Show the world what you got.</span></div>
